@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.circle{
+		width: 0px;
+		height: 0px;
+		background: yellow;
+		border-radius: 50%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transition: all 1s ease 0.1s;
+	}
+</style>
+<body>
+	<div class="circle"></div>
+	<script>
+		window.onload=function(){
+			for(i=0;i<20;i++){
+				let divs=document.createElement('div');
+                divs.className='circle';
+                let lefts=Math.floor((innerWidth-100)*Math.random());
+                let tops=Math.floor((innerHeight-100)*Math.random());
+                let widths=Math.floor(Math.random()*70+30);
+                let heights=Math.floor(Math.random()*70+30);
+                
+                divs.style.width=`${widths}px`;
+                divs.style.height=`${widths}px`;
+                divs.style.background=color();
+                document.body.appendChild(divs);
+                setTimeout(function(){
+                	divs.style.transitionDelay=`${i*5}ms`;
+                    divs.style.left=`${lefts}px`;
+                    divs.style.top=`${tops}px`;
+                }, 5);
+			}
+			function color(){
+                	let str='rgb(';
+                	for(let i=0;i<3;i++){
+                	let num=Math.floor(Math.random()*256);
+                	str+=num+',';
+                	} 
+                	str=str.slice(0,-1)+')';
+                	return str;          	
+            }
+
+		}
+	</script>
+</body>
+</html>
